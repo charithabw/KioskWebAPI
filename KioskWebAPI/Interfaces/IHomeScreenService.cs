@@ -6,5 +6,6 @@ namespace KioskWebAPI.Interfaces
     public interface IHomeScreenService
     {
         Task<KioskResponse> SaveHomeScreen(HomeScreenSaveModel item);
+        Task<KioskResponse> GetHomeScreen();
     }
 }
