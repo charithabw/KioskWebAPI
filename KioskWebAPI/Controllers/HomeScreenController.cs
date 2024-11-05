@@ -21,5 +21,12 @@ namespace KioskWebAPI.Controllers
             var scrnItem = await _homeScreenService.SaveHomeScreen(item);
             return scrnItem;
         }
+        [HttpGet]
+        [Route("GetHomeScreen")]
+        public async Task<KioskResponse> GetHomeScreen()
+        {
+            var scrnItem = await _homeScreenService.GetHomeScreen();
+            return scrnItem;
+        }
     }
 }
