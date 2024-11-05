@@ -55,7 +55,19 @@ namespace KioskWebAPI.Services
 
         public async Task<KioskResponse> GetHomeScreen()
         {
+            try
+            {
+                var result = await _context.HomeScreenGetModel
+                .FromSqlRaw("EXEC GetHomeScreen")
+                .ToListAsync();
 
+                return _response.GenerateResponseMessage(statusCode.SUCCESS.ToString(), result);
+            }
+            catch(Exception e)
+            {
+                return _response.GenerateResponseMessage(statusCode.ERROR.ToString(), null);
+            }
+            
         }
     }
 }
