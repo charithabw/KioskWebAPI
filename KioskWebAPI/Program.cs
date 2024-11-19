@@ -6,6 +6,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost3000", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -16,6 +29,7 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 builder.Services.AddScoped<IKioskResponse, KioskResponse>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IHomeScreenService, HomeScreenService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -31,6 +45,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowLocalhost3000");
 
 app.UseAuthorization();
 
