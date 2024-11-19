@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KioskWebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class HomeScreenController : Controller
     {
         private readonly IHomeScreenService _homeScreenService;
