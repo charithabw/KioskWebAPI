@@ -74,5 +74,7 @@
     <Build Include="dbo\Stored Procedures\GetHomeScreen.sql" />
     <Build Include="dbo\Stored Procedures\GetCategory.sql" />
     <Build Include="Security\scrn.sql" />
+    <Build Include="dbo\Tables\ProductName.sql" />
+    <Build Include="dbo\Stored Procedures\GetProductName.sql" />
   </ItemGroup>
 </Project>
