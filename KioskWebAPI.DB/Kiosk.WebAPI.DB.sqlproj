@@ -76,5 +76,7 @@
     <Build Include="Security\scrn.sql" />
     <Build Include="dbo\Tables\ProductName.sql" />
     <Build Include="dbo\Stored Procedures\GetProductName.sql" />
+    <Build Include="dbo\Tables\ProductDetail.sql" />
+    <Build Include="dbo\Stored Procedures\GetProductDetailByProductNameID.sql" />
   </ItemGroup>
 </Project>
