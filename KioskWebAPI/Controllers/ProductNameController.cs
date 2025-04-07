@@ -1,6 +1,9 @@
 ﻿using Kiosk.WebAPI.Interfaces;
+using Kiosk.WebAPI.Models;
 using KioskWebAPI.Common;
 using KioskWebAPI.Interfaces;
+using KioskWebAPI.Models;
+using KioskWebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kiosk.WebAPI.Controllers
@@ -22,6 +25,14 @@ namespace Kiosk.WebAPI.Controllers
         {
             var item = await _productNameService.GetProductName(CategoryID);
             return item;
+        }
+
+        [HttpPost]
+        [Route("SaveProductName")]
+        public async Task<KioskResponse> SaveProductName(ProductNameSaveModel item)
+        {
+            var scrnItem = await _productNameService.SaveProductName(item);
+            return scrnItem;
         }
     }
 }
