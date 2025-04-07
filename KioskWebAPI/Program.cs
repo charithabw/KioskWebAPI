@@ -1,3 +1,5 @@
+using Kiosk.WebAPI.Interfaces;
+using Kiosk.WebAPI.Services;
 using KioskWebAPI.Common;
 using KioskWebAPI.DBContexts;
 using KioskWebAPI.Interfaces;
@@ -30,6 +32,10 @@ builder.Services.AddScoped<IKioskResponse, KioskResponse>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IHomeScreenService, HomeScreenService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductNameService, ProductNameService>();
+builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
