@@ -15,6 +15,7 @@ namespace KioskWebAPI.DBContexts
         public DbSet<ProductNameGetModel> ProductNameGetModel { get; set; }
         public DbSet<ProductDetailGetModel> ProductDetailGetModel { get; set; }
         public DbSet<ProductImageGetModel> ProductImageGetModel { get; set; }
+        public DbSet<PermissionGetModel> PermissionGetModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +28,7 @@ namespace KioskWebAPI.DBContexts
             modelBuilder.Entity<ProductNameGetModel>().HasNoKey();
             modelBuilder.Entity<ProductDetailGetModel>().HasNoKey();
             modelBuilder.Entity<ProductImageGetModel>().HasNoKey();
+            modelBuilder.Entity<PermissionGetModel>().HasNoKey();
 
             // Other entity configurations (if any)
         }

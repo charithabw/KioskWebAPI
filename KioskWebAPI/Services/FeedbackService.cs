@@ -24,6 +24,7 @@ namespace Kiosk.WebAPI.Services
             int outputParam = 0;
 
             var pEmojiID = new SqlParameter { ParameterName = "@EmojiID", SqlDbType = SqlDbType.Int, Value = item.EmojiID, Direction = ParameterDirection.Input };
+            var pScreenID = new SqlParameter { ParameterName = "@ScreenID", SqlDbType = SqlDbType.Int, Value = item.ScreenID, Direction = ParameterDirection.Input };
             var pFeedback = new SqlParameter { ParameterName = "@Feedback", SqlDbType = SqlDbType.NVarChar, Value = item.Feedback, Direction = ParameterDirection.Input };
             var pCusName = new SqlParameter { ParameterName = "@CusName", SqlDbType = SqlDbType.NVarChar, Value = item.CusName, Direction = ParameterDirection.Input };
             var pCusPhone = new SqlParameter { ParameterName = "@CusPhone", SqlDbType = SqlDbType.NVarChar, Value = item.CusPhone, Direction = ParameterDirection.Input };
@@ -33,8 +34,8 @@ namespace Kiosk.WebAPI.Services
 
             try
             {
-                var result = await _context.Database.ExecuteSqlRawAsync("EXEC SaveFeedback @EmojiID, @Feedback, @CusName, @CusPhone, @CusEmail, @Result OUTPUT",
-                    pEmojiID, pFeedback, pCusName, pCusPhone, pCusEmail, pOut);
+                var result = await _context.Database.ExecuteSqlRawAsync("EXEC SaveFeedback @EmojiID, @ScreenID, @Feedback, @CusName, @CusPhone, @CusEmail, @Result OUTPUT",
+                    pEmojiID, pScreenID, pFeedback, pCusName, pCusPhone, pCusEmail, pOut);
                 outputParam = (int)pOut.Value;
 
                 if (outputParam > 0)
