@@ -1,6 +1,7 @@
 ﻿
 CREATE PROCEDURE [dbo].[SaveFeedback]	
 	@EmojiID int,	
+	@ScreenID int,
 	@Feedback varchar(550),	
 	@CusName varchar(50),	
 	@CusPhone varchar(12),	
@@ -12,6 +13,7 @@ BEGIN
 	SET NOCOUNT ON;
 	INSERT INTO Feedback(		
 		EmojiID,
+		ScreenID,
 		Feedback,
 		CusName,
 		CusPhone,
@@ -19,6 +21,7 @@ BEGIN
 		CreatedDate
 	)VALUES (		
 		@EmojiID,
+		@ScreenID,
 		@Feedback,		
 		@CusName,		
 		@CusPhone,		
