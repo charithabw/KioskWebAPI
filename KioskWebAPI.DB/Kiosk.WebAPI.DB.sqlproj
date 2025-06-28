@@ -94,5 +94,12 @@
     <Build Include="dbo\Stored Procedures\SaveScreen.sql" />
     <Build Include="dbo\Stored Procedures\GetScreen.sql" />
     <Build Include="dbo\Stored Procedures\GetRole.sql" />
+    <Build Include="dbo\Tables\Promotional.sql" />
+    <Build Include="dbo\Tables\HomeScreen.sql" />
+    <Build Include="dbo\Tables\CategoryScreen.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePromotional.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateCategory.sql" />
+    <Build Include="dbo\Stored Procedures\SavePromotional.sql" />
+    <Build Include="dbo\Stored Procedures\GetPromotional.sql" />
   </ItemGroup>
 </Project>

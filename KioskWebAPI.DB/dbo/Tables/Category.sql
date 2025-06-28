@@ -8,6 +8,7 @@
     [CreatedBy]    INT            NULL,
     [ModifiedDate] DATETIME       NULL,
     [ModifiedBy]   INT            NULL,
+    [ImagePath]    NVARCHAR (255) NULL,
     CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED ([CategoryID] ASC)
 );
 

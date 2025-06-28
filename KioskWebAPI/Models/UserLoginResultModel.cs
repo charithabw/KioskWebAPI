@@ -4,14 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KioskWebAPI.Models
 {
-    
+
     public class UserLoginResultModel
     {
-        
+
         public string Status { get; set; }
-        
+
         public int? UserId { get; set; }
-        
+
         public string Username { get; set; }
+        public int? RoleID { get; set; }
     }
 }

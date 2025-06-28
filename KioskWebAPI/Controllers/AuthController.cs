@@ -17,12 +17,12 @@ namespace KioskWebAPI.Controllers
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginRequest request)
-        {            
+        {
             var result = await _authService.LoginUserAsync(request.Username, request.Password);
 
             if (result.Status == "Success")
             {
-                return Ok(new { result.Status, result.UserId, result.Username });
+                return Ok(new { result.Status, result.UserId, result.Username, result.RoleID });
             }
             else
             {

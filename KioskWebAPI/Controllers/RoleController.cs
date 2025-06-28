@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kiosk.WebAPI.Controllers
 {
+    //changed api path
+    [Route("api/[controller]")]
+    [ApiController]
     public class RoleController : Controller
     {
         private readonly IRoleService _roleService;

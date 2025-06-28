@@ -7,7 +7,9 @@ BEGIN
 	SET NOCOUNT ON;
 	SELECT [ScreenID]
 		  ,[ScreenCode]
-		  ,[ScreenName]		 
+		  ,[ScreenName]	
+		  ,[IsActive]
+		  ,[CreatedDate]
 	  FROM [dbo].[Screen]
 	WHERE IsActive = 1
 

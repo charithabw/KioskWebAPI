@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kiosk.WebAPI.Controllers
 {
+    //changed api path
+    [Route("api/[controller]")]
+    [ApiController]
     public class PermissionController : Controller
     {
         private readonly IPermissionService _permissionService;

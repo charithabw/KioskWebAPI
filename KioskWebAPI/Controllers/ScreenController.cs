@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kiosk.WebAPI.Controllers
 {
+
+    //changed api path
+    [Route("api/[controller]")]
+    [ApiController]
     public class ScreenController : Controller
     {
         private readonly IScreenService _screenService;

@@ -7,6 +7,7 @@ CREATE PROCEDURE [dbo].[UpdateProductName]
 	@ProdTam varchar(50),	
 	@ModifiedBy int,
 	@Result INT OUTPUT
+	
 AS
 BEGIN
 	SET NOCOUNT ON;
