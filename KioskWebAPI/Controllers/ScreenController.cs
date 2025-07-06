@@ -33,5 +33,13 @@ namespace Kiosk.WebAPI.Controllers
             var scrnItem = await _screenService.SaveScreen(item);
             return scrnItem;
         }
+
+        [HttpPut]
+        [Route("UpdateScreen/{screenId}")]
+        public async Task<KioskResponse> UpdateScreen(int screenId, [FromBody] ScreenUpdateModel item)
+        {
+            var result = await _screenService.UpdateScreen(screenId, item);
+            return result;
+        }
     }
 }
