@@ -5,6 +5,7 @@ using KioskWebAPI.DBContexts;
 using KioskWebAPI.Interfaces;
 using KioskWebAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,5 +62,26 @@ app.UseCors("AllowLocalhost3000");
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Combine both file providers into a single CompositeFileProvider
+var compositeFileProvider = new CompositeFileProvider(
+    new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "KioskCMS", "public", "uploads")),
+    new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "KioskFrontend", "public", "uploads"))
+);
+
+// Serve static files from both locations under /uploads
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = compositeFileProvider,
+    RequestPath = "/uploads"
+});
+
+/* Serve static files from KioskCMS/public/uploads at /uploads
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "KioskCMS", "public", "uploads")),
+    RequestPath = "/uploads"
+}); */
 
 app.Run();
