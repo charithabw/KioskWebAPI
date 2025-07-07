@@ -101,5 +101,11 @@
     <Build Include="dbo\Stored Procedures\UpdateCategory.sql" />
     <Build Include="dbo\Stored Procedures\SavePromotional.sql" />
     <Build Include="dbo\Stored Procedures\GetPromotional.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateScreen.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateRole.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePermission.sql" />
+    <Build Include="dbo\Stored Procedures\SaveRole.sql" />
+    <Build Include="dbo\Stored Procedures\SavePermission.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllPermissions.sql" />
   </ItemGroup>
 </Project>

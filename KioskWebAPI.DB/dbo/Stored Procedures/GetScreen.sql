@@ -10,6 +10,9 @@ BEGIN
 		  ,[ScreenName]	
 		  ,[IsActive]
 		  ,[CreatedDate]
+		  ,[ModifiedBy]
+		  ,[ModifiedDate]
+		  ,[CreatedBy]
 	  FROM [dbo].[Screen]
 	WHERE IsActive = 1
 

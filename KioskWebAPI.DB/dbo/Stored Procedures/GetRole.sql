@@ -9,6 +9,9 @@ BEGIN
 		  ,[RoleName]
 		  ,[IsActive]
 		  ,[CreatedDate]
+		  ,[ModifiedBy]
+		  ,[ModifiedDate]
+		  ,[CreatedBy]
 	  FROM [dbo].[Role]
 	WHERE IsActive = 1
 

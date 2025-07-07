@@ -1,7 +1,8 @@
 ﻿
 CREATE PROCEDURE [dbo].[SaveScreen]
 	@ScreenCode varchar(50),	
-	@ScreenName varchar(50),	
+	@ScreenName varchar(50),
+	@CreatedBy INT = NULL,
 	@Result INT OUTPUT
 AS
 BEGIN
@@ -11,12 +12,14 @@ BEGIN
 		ScreenCode,
 		ScreenName,		
 		IsActive,
-		CreatedDate		
+		CreatedDate,
+		CreatedBy
 	)VALUES (
 		@ScreenCode,
 		@ScreenName,		
 		1,
-		GETDATE()		
+		GETDATE(),
+		@CreatedBy
 	)
 	SEt @Result = @@ROWCOUNT; 
 
