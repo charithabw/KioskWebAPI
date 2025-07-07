@@ -49,7 +49,7 @@ namespace Kiosk.WebAPI.Services
         {
             int outputParam = 0;
             var pRoleName = new SqlParameter("@RoleName", item.RoleName ?? (object)DBNull.Value);
-            var pIsActive = new SqlParameter("@IsActive", item.IsActive ?? (object)DBNull.Value);
+            //var pIsActive = new SqlParameter("@IsActive", item.IsActive ?? (object)DBNull.Value);
            // var pCreatedDate = new SqlParameter("@CreatedDate", item.CreatedDate ?? (object)DBNull.Value);
             var pCreatedBy = new SqlParameter("@CreatedBy", item.CreatedBy ?? (object)DBNull.Value);
             var pOut = new SqlParameter("@Result", System.Data.SqlDbType.Int) { Direction = System.Data.ParameterDirection.Output };
@@ -57,8 +57,8 @@ namespace Kiosk.WebAPI.Services
             try
             {
                 await _context.Database.ExecuteSqlRawAsync(
-                    "EXEC SaveRole @RoleName, @IsActive, @CreatedBy, @Result OUTPUT",
-                    pRoleName, pIsActive, pCreatedBy, pOut);
+                    "EXEC SaveRole @RoleName, @CreatedBy, @Result OUTPUT",
+                    pRoleName, pCreatedBy, pOut);
                 outputParam = (int)pOut.Value;
 
                 if (outputParam > 0)
