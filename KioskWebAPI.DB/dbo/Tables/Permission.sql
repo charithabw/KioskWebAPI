@@ -10,6 +10,9 @@
     [CanView]        BIT           CONSTRAINT [DF_Permission_CanView] DEFAULT ((1)) NULL,
     [IsActive]       BIT           NULL,
     [CreatedDate]    DATETIME      CONSTRAINT [DF_Permission_CreatedDate] DEFAULT (getdate()) NULL,
+    [CreatedBy]      INT           NULL,
+    [ModifiedDate]   DATETIME      NULL,
+    [ModifiedBy]     INT           NULL,
     CONSTRAINT [PK_Permission] PRIMARY KEY CLUSTERED ([PermissionID] ASC),
     CONSTRAINT [FK_Permission_Role] FOREIGN KEY ([RoleID]) REFERENCES [dbo].[Role] ([RoleID]),
     CONSTRAINT [FK_Permission_Screen] FOREIGN KEY ([ScreenID]) REFERENCES [dbo].[Screen] ([ScreenID])

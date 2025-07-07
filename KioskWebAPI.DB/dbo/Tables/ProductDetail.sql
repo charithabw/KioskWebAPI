@@ -4,15 +4,15 @@
     [TitleEng]        NVARCHAR (250) NULL,
     [TitleSin]        NVARCHAR (250) NULL,
     [TitleTam]        NVARCHAR (250) NULL,
-    [DesEng]          NVARCHAR (550) NULL,
-    [DesSin]          NVARCHAR (550) NULL,
-    [DesTam]          NVARCHAR (550) NULL,
+    [DesEng]          NVARCHAR (MAX) NULL,
+    [DesSin]          NVARCHAR (MAX) NULL,
+    [DesTam]          NVARCHAR (MAX) NULL,
     [SubTitleEng]     NVARCHAR (250) NULL,
     [SubTitleSin]     NVARCHAR (250) NULL,
     [SubTitleTam]     NVARCHAR (250) NULL,
-    [PointListEng]    NVARCHAR (550) NULL,
-    [PointListSin]    NVARCHAR (550) NULL,
-    [PointListTam]    NVARCHAR (550) NULL,
+    [PointListEng]    NVARCHAR (MAX) NULL,
+    [PointListSin]    NVARCHAR (MAX) NULL,
+    [PointListTam]    NVARCHAR (MAX) NULL,
     [IsActive]        BIT            NOT NULL,
     [CreatedDate]     DATETIME       CONSTRAINT [DF_ProductDetail_CreatedDate] DEFAULT (getdate()) NULL,
     [CreatedBy]       INT            NULL,
@@ -21,6 +21,4 @@
     CONSTRAINT [PK_ProductDetail] PRIMARY KEY CLUSTERED ([ProductDetailID] ASC),
     CONSTRAINT [FK_ProductDetail_ProductName] FOREIGN KEY ([ProductNameID]) REFERENCES [dbo].[ProductName] ([ProductNameID])
 );
-
-
 
