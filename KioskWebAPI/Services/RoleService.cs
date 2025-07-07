@@ -50,15 +50,15 @@ namespace Kiosk.WebAPI.Services
             int outputParam = 0;
             var pRoleName = new SqlParameter("@RoleName", item.RoleName ?? (object)DBNull.Value);
             var pIsActive = new SqlParameter("@IsActive", item.IsActive ?? (object)DBNull.Value);
-            var pCreatedDate = new SqlParameter("@CreatedDate", item.CreatedDate ?? (object)DBNull.Value);
+           // var pCreatedDate = new SqlParameter("@CreatedDate", item.CreatedDate ?? (object)DBNull.Value);
             var pCreatedBy = new SqlParameter("@CreatedBy", item.CreatedBy ?? (object)DBNull.Value);
             var pOut = new SqlParameter("@Result", System.Data.SqlDbType.Int) { Direction = System.Data.ParameterDirection.Output };
 
             try
             {
                 await _context.Database.ExecuteSqlRawAsync(
-                    "EXEC SaveRole @RoleName, @IsActive, @CreatedDate, @CreatedBy, @Result OUTPUT",
-                    pRoleName, pIsActive, pCreatedDate, pCreatedBy, pOut);
+                    "EXEC SaveRole @RoleName, @IsActive, @CreatedBy, @Result OUTPUT",
+                    pRoleName, pIsActive, pCreatedBy, pOut);
                 outputParam = (int)pOut.Value;
 
                 if (outputParam > 0)
@@ -78,15 +78,15 @@ namespace Kiosk.WebAPI.Services
             var pRoleId = new SqlParameter("@RoleID", roleId);
             var pRoleName = new SqlParameter("@RoleName", item.RoleName ?? (object)DBNull.Value);
             var pIsActive = new SqlParameter("@IsActive", item.IsActive ?? (object)DBNull.Value);
-            var pCreatedDate = new SqlParameter("@CreatedDate", item.CreatedDate ?? (object)DBNull.Value);
+            //var pCreatedDate = new SqlParameter("@CreatedDate", item.CreatedDate ?? (object)DBNull.Value);
             var pModifiedBy = new SqlParameter("@ModifiedBy", item.ModifiedBy ?? (object)DBNull.Value);
             var pOut = new SqlParameter("@Result", System.Data.SqlDbType.Int) { Direction = System.Data.ParameterDirection.Output };
 
             try
             {
                 await _context.Database.ExecuteSqlRawAsync(
-                    "EXEC UpdateRole @RoleID, @RoleName, @IsActive, @CreatedDate, @ModifiedBy, @Result OUTPUT",
-                    pRoleId, pRoleName, pIsActive, pCreatedDate, pModifiedBy, pOut);
+                    "EXEC UpdateRole @RoleID, @RoleName, @IsActive, @ModifiedBy, @Result OUTPUT",
+                    pRoleId, pRoleName, pIsActive, pModifiedBy, pOut);
                 outputParam = (int)pOut.Value;
 
                 if (outputParam > 0)
