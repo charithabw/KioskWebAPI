@@ -1,4 +1,5 @@
 ﻿using Kiosk.WebAPI.Interfaces;
+using Kiosk.WebAPI.Models;
 using KioskWebAPI.Common;
 using KioskWebAPI.Interfaces;
 using KioskWebAPI.Services;
@@ -23,6 +24,27 @@ namespace Kiosk.WebAPI.Controllers
         {
             var item = await _permissionService.GetPermissionByRoleIDAndScreenID(roleID, screenID);
             return item;
+        }
+
+        [HttpGet]
+        [Route("GetAllPermissions")]
+        public async Task<KioskResponse> GetAllPermissions()
+        {
+            return await _permissionService.GetAllPermissions();
+        }
+
+        [HttpPost]
+        [Route("SavePermission")]
+        public async Task<KioskResponse> SavePermission(PermissionSaveModel item)
+        {
+            return await _permissionService.SavePermission(item);
+        }
+
+        [HttpPut]
+        [Route("UpdatePermission/{permissionId}")]
+        public async Task<KioskResponse> UpdatePermission(int permissionId, [FromBody] PermissionUpdateModel item)
+        {
+            return await _permissionService.UpdatePermission(permissionId, item);
         }
     }
 }
