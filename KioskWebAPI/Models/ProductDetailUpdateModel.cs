@@ -1,7 +1,8 @@
-﻿namespace Kiosk.WebAPI.Models
+﻿
+namespace Kiosk.WebAPI.Models
 {
-    public class ProductDetailSaveModel
-    {       
+    public class ProductDetailUpdateModel
+    {
         public int ProductNameID { get; set; }
         public string? TitleEng { get; set; }
         public string? TitleSin { get; set; }
@@ -16,7 +17,7 @@
         public string? PointListSin { get; set; }
         public string? PointListTam { get; set; }
         public bool IsActive { get; set; }
-        //public DateTime? CreatedDate { get; set; }
-        public int? CreatedBy { get; set; }
+        //public DateTime? ModifiedDate { get; set; }
+        public int? ModifiedBy { get; set; }
     }
 }
