@@ -78,32 +78,31 @@ namespace Kiosk.WebAPI.Services
             }
         }
 
-        public async Task<KioskResponse> UpdateProductName(ProductNameUpdateModel item)
+        public async Task<KioskResponse> UpdateProductName(int productNameId, ProductNameUpdateModel item)
         {
             int outputParam = 0;
 
-            var pProductNameID = new SqlParameter { ParameterName = "@ProductNameID", SqlDbType = SqlDbType.Int, Value = item.ProductNameID, Direction = ParameterDirection.Input };
-            var pCategoryID = new SqlParameter { ParameterName = "@CategoryID", SqlDbType = SqlDbType.Int, Value = item.CategoryID, Direction = ParameterDirection.Input };            
-            var pProdEng = new SqlParameter { ParameterName = "@ProdEng", SqlDbType = SqlDbType.NVarChar, Value = item.ProdEng, Direction = ParameterDirection.Input };
-            var pProdSin = new SqlParameter { ParameterName = "@ProdSin", SqlDbType = SqlDbType.NVarChar, Value = item.ProdSin, Direction = ParameterDirection.Input };
-            var pProdTam = new SqlParameter { ParameterName = "@ProdTam", SqlDbType = SqlDbType.NVarChar, Value = item.ProdTam, Direction = ParameterDirection.Input };
-            var pModifiedBy = new SqlParameter { ParameterName = "@ModifiedBy", SqlDbType = SqlDbType.Int, Value = item.ModifiedBy, Direction = ParameterDirection.Input };
-
-            var pOut = new SqlParameter { ParameterName = "@Result", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
+            var pProductNameID = new SqlParameter("@ProductNameID", productNameId);
+            var pCategoryID = new SqlParameter("@CategoryID", item.CategoryID);
+            var pProdEng = new SqlParameter("@ProdEng", item.ProdEng ?? (object)DBNull.Value);
+            var pProdSin = new SqlParameter("@ProdSin", item.ProdSin ?? (object)DBNull.Value);
+            var pProdTam = new SqlParameter("@ProdTam", item.ProdTam ?? (object)DBNull.Value);
+            var pIsActive = new SqlParameter("@IsActive", item.IsActive);
+            //var pModifiedDate = new SqlParameter("@ModifiedDate", item.ModifiedDate ?? (object)DBNull.Value);
+            var pModifiedBy = new SqlParameter("@ModifiedBy", item.ModifiedBy ?? (object)DBNull.Value);
+            var pOut = new SqlParameter("@Result", SqlDbType.Int) { Direction = ParameterDirection.Output };
 
             try
             {
-                var result = await _context.Database.ExecuteSqlRawAsync("EXEC UpdateProductName @ProductNameID, @CategoryID, @ProdEng, @ProdSin, @ProdTam, @ModifiedBy, @Result OUTPUT", pProductNameID, pCategoryID, pProdEng, pProdSin, pProdTam, pModifiedBy, pOut);
+                await _context.Database.ExecuteSqlRawAsync(
+                    "EXEC UpdateProductName @ProductNameID, @CategoryID, @ProdEng, @ProdSin, @ProdTam, @IsActive, @ModifiedBy, @Result OUTPUT",
+                    pProductNameID, pCategoryID, pProdEng, pProdSin, pProdTam, pIsActive, pModifiedBy, pOut);
                 outputParam = (int)pOut.Value;
 
                 if (outputParam > 0)
-                {
-                    return _response.GenerateResponseMessage(statusCode.SUCCESS.ToString(), outputParam + " Record Added");
-                }
+                    return _response.GenerateResponseMessage(statusCode.SUCCESS.ToString(), outputParam + " Record Updated");
                 else
-                {
                     return _response.GenerateResponseMessage(statusCode.ERROR.ToString(), "No Record Updated");
-                }
             }
             catch (Exception ex)
             {

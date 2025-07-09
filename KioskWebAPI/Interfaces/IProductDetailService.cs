@@ -7,5 +7,7 @@ namespace Kiosk.WebAPI.Interfaces
     {
         Task<KioskResponse> GetProductDetailByProductNameID(int productNameID);
         Task<KioskResponse> SaveProductDetail(ProductDetailSaveModel item);
+
+        Task<KioskResponse> UpdateProductDetail(int productDetailId, ProductDetailUpdateModel item);
     }
 }
