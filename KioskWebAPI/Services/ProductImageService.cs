@@ -96,7 +96,7 @@ namespace Kiosk.WebAPI.Services
             try
             {
                 await _context.Database.ExecuteSqlRawAsync(
-                    "EXEC UpdateProductImage @ProductImageID, @ProductNameID, @Logo, @QRAndroid, @QRApple, @QRHuawei, @BackgroundImage, @IsActive,, @ModifiedBy, @Result OUTPUT",
+                    "EXEC UpdateProductImage @ProductImageID, @ProductNameID, @Logo, @QRAndroid, @QRApple, @QRHuawei, @BackgroundImage, @IsActive, @ModifiedBy, @Result OUTPUT",
                     pProductImageID, pProductNameID, pLogo, pQRAndroid, pQRApple, pQRHuawei, pBackgroundImage, pIsActive,pModifiedBy, pOut);
                 outputParam = (int)pOut.Value;
 
