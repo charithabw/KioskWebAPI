@@ -3,6 +3,8 @@ namespace Kiosk.WebAPI.Models
 {
     public class ProductDetailUpdateModel
     {
+
+        public int ProductDetailID { get; set; }
         public int ProductNameID { get; set; }
         public string? TitleEng { get; set; }
         public string? TitleSin { get; set; }

@@ -2,6 +2,7 @@
 {
     public class ProductImageUpdateModel
     {
+        public int ProductImageID { get; set; }
         public int ProductNameID { get; set; }
         public string? Logo { get; set; }
         public string? QRAndroid { get; set; }
