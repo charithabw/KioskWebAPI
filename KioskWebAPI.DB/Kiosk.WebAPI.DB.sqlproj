@@ -107,5 +107,8 @@
     <Build Include="dbo\Stored Procedures\SaveRole.sql" />
     <Build Include="dbo\Stored Procedures\SavePermission.sql" />
     <Build Include="dbo\Stored Procedures\GetAllPermissions.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateProductImage.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateProductDetail.sql" />
+    <Build Include="dbo\Stored Procedures\SaveProductImage.sql" />
   </ItemGroup>
 </Project>
