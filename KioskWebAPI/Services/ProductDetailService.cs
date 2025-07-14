@@ -87,5 +87,46 @@ namespace Kiosk.WebAPI.Services
                 return _response.GenerateResponseMessage(statusCode.ERROR.ToString(), string.Empty, ex.Message);
             }
         }
+
+        public async Task<KioskResponse> UpdateProductDetail(int productDetailId, ProductDetailUpdateModel item)
+        {
+            int outputParam = 0;
+
+            var pProductDetailID = new SqlParameter("@ProductDetailID", productDetailId);
+            var pProductNameID = new SqlParameter("@ProductNameID", item.ProductNameID);
+            var pTitleEng = new SqlParameter("@TitleEng", item.TitleEng ?? (object)DBNull.Value);
+            var pTitleSin = new SqlParameter("@TitleSin", item.TitleSin ?? (object)DBNull.Value);
+            var pTitleTam = new SqlParameter("@TitleTam", item.TitleTam ?? (object)DBNull.Value);
+            var pDesEng = new SqlParameter("@DesEng", item.DesEng ?? (object)DBNull.Value);
+            var pDesSin = new SqlParameter("@DesSin", item.DesSin ?? (object)DBNull.Value);
+            var pDesTam = new SqlParameter("@DesTam", item.DesTam ?? (object)DBNull.Value);
+            var pSubTitleEng = new SqlParameter("@SubTitleEng", item.SubTitleEng ?? (object)DBNull.Value);
+            var pSubTitleSin = new SqlParameter("@SubTitleSin", item.SubTitleSin ?? (object)DBNull.Value);
+            var pSubTitleTam = new SqlParameter("@SubTitleTam", item.SubTitleTam ?? (object)DBNull.Value);
+            var pPointListEng = new SqlParameter("@PointListEng", item.PointListEng ?? (object)DBNull.Value);
+            var pPointListSin = new SqlParameter("@PointListSin", item.PointListSin ?? (object)DBNull.Value);
+            var pPointListTam = new SqlParameter("@PointListTam", item.PointListTam ?? (object)DBNull.Value);
+            var pIsActive = new SqlParameter("@IsActive", item.IsActive);
+            //var pModifiedDate = new SqlParameter("@ModifiedDate", item.ModifiedDate ?? (object)DBNull.Value);
+            var pModifiedBy = new SqlParameter("@ModifiedBy", item.ModifiedBy ?? (object)DBNull.Value);
+            var pOut = new SqlParameter("@Result", SqlDbType.Int) { Direction = ParameterDirection.Output };
+
+            try
+            {
+                await _context.Database.ExecuteSqlRawAsync(
+                    "EXEC UpdateProductDetail @ProductDetailID, @ProductNameID, @TitleEng, @TitleSin, @TitleTam, @DesEng, @DesSin, @DesTam, @SubTitleEng, @SubTitleSin, @SubTitleTam, @PointListEng, @PointListSin, @PointListTam, @IsActive,@ModifiedBy, @Result OUTPUT",
+                    pProductDetailID, pProductNameID, pTitleEng, pTitleSin, pTitleTam, pDesEng, pDesSin, pDesTam, pSubTitleEng, pSubTitleSin, pSubTitleTam, pPointListEng, pPointListSin, pPointListTam, pIsActive,pModifiedBy, pOut);
+                outputParam = (int)pOut.Value;
+
+                if (outputParam > 0)
+                    return _response.GenerateResponseMessage(statusCode.SUCCESS.ToString(), outputParam + " Record Updated");
+                else
+                    return _response.GenerateResponseMessage(statusCode.ERROR.ToString(), "No Record Updated");
+            }
+            catch (Exception ex)
+            {
+                return _response.GenerateResponseMessage(statusCode.ERROR.ToString(), string.Empty, ex.Message);
+            }
+        }
     }
 }

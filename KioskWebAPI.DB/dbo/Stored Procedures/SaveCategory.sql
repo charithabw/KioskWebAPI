@@ -4,6 +4,7 @@ CREATE PROCEDURE [dbo].[SaveCategory]
 	@CatSin varchar(50),	
 	@CatTam varchar(50),	
 	@CreatedBy int,
+	@ImagePath varchar(255),
 	@Result INT OUTPUT
 AS
 BEGIN
@@ -15,14 +16,16 @@ BEGIN
 		CatTam,
 		IsActive,
 		CreatedDate,
-		CreatedBy
+		CreatedBy,
+		ImagePath
 	)VALUES (
 		@CatEng,
 		@CatSin,
 		@CatTam,
 		1,
 		GETDATE(),
-		@CreatedBy
+		@CreatedBy,
+		@ImagePath
 	)
 	SEt @Result = @@ROWCOUNT; 
 

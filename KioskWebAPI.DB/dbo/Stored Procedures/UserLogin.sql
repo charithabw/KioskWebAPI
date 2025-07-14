@@ -14,12 +14,12 @@ BEGIN
     -- Check if the provided password matches the stored hash
     IF @StoredPasswordHash IS NOT NULL AND @StoredPasswordHash = @Password
     BEGIN
-        SELECT 'Success' AS Status, UserId, Username
+        SELECT 'Success' AS Status, UserId, Username,RoleID
         FROM Users
         WHERE Username = @Username;
     END
     ELSE
     BEGIN
-        SELECT 'Failure' AS Status, 0 AS UserId, 'Null' AS Username;
+        SELECT 'Failure' AS Status, 0 AS UserId, 'Null' AS Username,0 AS RoleID;
     END
 END;

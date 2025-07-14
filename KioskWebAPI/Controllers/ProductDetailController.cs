@@ -32,5 +32,13 @@ namespace Kiosk.WebAPI.Controllers
             var scrnItem = await _productDetailService.SaveProductDetail(item);
             return scrnItem;
         }
+
+        [HttpPut]
+        [Route("UpdateProductDetail/{productDetailId}")]
+        public async Task<KioskResponse> UpdateProductDetail(int productDetailId, [FromBody] ProductDetailUpdateModel item)
+        {
+            var result = await _productDetailService.UpdateProductDetail(productDetailId, item);
+            return result;
+        }
     }
 }

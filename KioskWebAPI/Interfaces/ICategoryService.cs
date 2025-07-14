@@ -7,5 +7,8 @@ namespace KioskWebAPI.Interfaces
     {
         Task<KioskResponse> GetCategory();
         Task<KioskResponse> SaveCategory(CategorySaveModel item);
+
+        Task<KioskResponse> UpdateCategory(int CategoryId, CategoryUpdateModel item);
+  
     }
 }

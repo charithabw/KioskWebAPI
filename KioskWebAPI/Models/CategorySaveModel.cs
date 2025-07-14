@@ -6,5 +6,11 @@
         public string CatSin { get; set; }
         public string CatTam { get; set; }
         public int CreatedBy { get; set; }
+
+
+        public string? ImagePath { get; set; }
+        public bool IsActive { get; set; }
+
+
     }
 }

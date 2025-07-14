@@ -1,4 +1,5 @@
-﻿namespace Kiosk.WebAPI.Models
+﻿
+namespace Kiosk.WebAPI.Models
 {
     public class ProductNameUpdateModel
     {
@@ -7,6 +8,8 @@
         public string? ProdEng { get; set; }
         public string? ProdSin { get; set; }
         public string? ProdTam { get; set; }
-        public int ModifiedBy { get; set; }
+        public bool IsActive { get; set; }
+        //public DateTime? ModifiedDate { get; set; }
+        public int? ModifiedBy { get; set; }
     }
 }

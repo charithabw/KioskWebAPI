@@ -1,8 +1,10 @@
-﻿using KioskWebAPI.Common;
+﻿using Azure;
+using KioskWebAPI.Common;
 using KioskWebAPI.Interfaces;
 using KioskWebAPI.Models;
 using KioskWebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using static KioskWebAPI.Common.KioskEnums;
 
 namespace KioskWebAPI.Controllers
 {
@@ -31,6 +33,15 @@ namespace KioskWebAPI.Controllers
         {
             var scrnItem = await _categoryService.SaveCategory(item);
             return scrnItem;
+        }
+
+
+        [HttpPut]
+        [Route("UpdateCategory/{CategoryId}")]
+        public async Task<KioskResponse> UpdateCategory(int CategoryId, [FromBody] CategoryUpdateModel item)
+        {
+            var updatedItem = await _categoryService.UpdateCategory(CategoryId, item);
+            return updatedItem;
         }
     }
 }

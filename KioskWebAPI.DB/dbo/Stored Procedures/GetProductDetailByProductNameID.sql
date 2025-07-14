@@ -18,7 +18,12 @@ BEGIN
 		  ,[SubTitleTam]
 		  ,[PointListEng]
 		  ,[PointListSin]
-		  ,[PointListTam]      
+		  ,[PointListTam]
+		  ,[IsActive]
+		  ,[CreatedBy]
+		  ,[CreatedDate]
+		  ,[ModifiedBy]
+		  ,[ModifiedDate]
 	FROM ProductDetail
 	WHERE ProductNameID = @ProductNameID AND IsActive = 1
 

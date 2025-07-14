@@ -15,6 +15,8 @@
         public string? PointListEng { get; set; }
         public string? PointListSin { get; set; }
         public string? PointListTam { get; set; }
-        public int CreatedBy { get; set; }
+        public bool IsActive { get; set; }
+        //public DateTime? CreatedDate { get; set; }
+        public int? CreatedBy { get; set; }
     }
 }

@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kiosk.WebAPI.Controllers
 {
+
+    //changed api path
+    [Route("api/[controller]")]
+    [ApiController]
     public class ScreenController : Controller
     {
         private readonly IScreenService _screenService;
@@ -28,6 +32,14 @@ namespace Kiosk.WebAPI.Controllers
         {
             var scrnItem = await _screenService.SaveScreen(item);
             return scrnItem;
+        }
+
+        [HttpPut]
+        [Route("UpdateScreen/{screenId}")]
+        public async Task<KioskResponse> UpdateScreen(int screenId, [FromBody] ScreenUpdateModel item)
+        {
+            var result = await _screenService.UpdateScreen(screenId, item);
+            return result;
         }
     }
 }

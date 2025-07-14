@@ -7,5 +7,6 @@ namespace Kiosk.WebAPI.Interfaces
     {
         Task<KioskResponse> GetScreen();
         Task<KioskResponse> SaveScreen(ScreenSaveModel item);
+        Task<KioskResponse> UpdateScreen(int screenId, ScreenUpdateModel item);
     }
 }

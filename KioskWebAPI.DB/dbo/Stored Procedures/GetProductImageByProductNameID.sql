@@ -6,12 +6,18 @@ BEGIN
 	
 	SET NOCOUNT ON;
 
-	SELECT [ProductImageID]		  
+	SELECT [ProductImageID]
+		  ,[ProductNameID]
 		  ,[Logo]
 		  ,[QRAndroid]
 		  ,[QRApple]
 		  ,[QRHuawei]
-		  ,[BackgroundImage]		     
+		  ,[BackgroundImage]
+		  ,[IsActive]
+		  ,[CreatedDate]
+		  ,[CreatedBy]
+		  ,[ModifiedDate]
+		  ,[ModifiedBy]
 	FROM ProductImage
 	WHERE ProductNameID = @ProductNameID AND IsActive = 1
 
