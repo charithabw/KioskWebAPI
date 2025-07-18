@@ -110,5 +110,8 @@
     <Build Include="dbo\Stored Procedures\UpdateProductImage.sql" />
     <Build Include="dbo\Stored Procedures\UpdateProductDetail.sql" />
     <Build Include="dbo\Stored Procedures\SaveProductImage.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUser.sql" />
+    <Build Include="dbo\Stored Procedures\SaveUser.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllUsers.sql" />
   </ItemGroup>
 </Project>

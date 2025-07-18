@@ -18,14 +18,14 @@ namespace KioskWebAPI.DBContexts
         public DbSet<PermissionGetModel> PermissionGetModel { get; set; }
         public DbSet<RoleGetModel> RoleGetModel { get; set; }
         public DbSet<ScreenGetModel> ScreenGetModel { get; set; }
-
         public DbSet<PromotionalGetModel> PromotionalGetModel { get; set; }
+        public DbSet<UserGetModel> UserGetModel { get; set; } // <-- ADD THIS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Mark UserLoginResultModel as a keyless entity
+            // Mark entities as keyless
             modelBuilder.Entity<UserLoginResultModel>().HasNoKey();
             modelBuilder.Entity<HomeScreenGetModel>().HasNoKey();
             modelBuilder.Entity<CategoryGetModel>().HasNoKey();
@@ -36,8 +36,7 @@ namespace KioskWebAPI.DBContexts
             modelBuilder.Entity<RoleGetModel>().HasNoKey();
             modelBuilder.Entity<ScreenGetModel>().HasNoKey();
             modelBuilder.Entity<PromotionalGetModel>().HasNoKey();
-
-            // Other entity configurations (if any)
+            modelBuilder.Entity<UserGetModel>().HasNoKey(); // <-- ADD THIS
         }
     }
 }
