@@ -1,11 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[UpdateCategory]
+﻿
+CREATE PROCEDURE [dbo].[UpdateCategory]
     @CategoryId INT,
-    @CatEng varchar(100),
-    @CatSin varchar(100),
-    @CatTam varchar(100),
+    @CatEng NVARCHAR(100),
+    @CatSin NVARCHAR(100),
+    @CatTam NVARCHAR(100),
     @ModifiedBy INT,
-	@ImagePath varchar(255),
-	@IsActive BIT,
+    @ImagePath NVARCHAR(255),
+    @IsActive BIT,
     @Result INT OUTPUT
 AS
 BEGIN
@@ -18,8 +19,8 @@ BEGIN
             CatEng = @CatEng,
             CatSin = @CatSin,
             CatTam = @CatTam,
-			ImagePath = @ImagePath,
-			IsActive = @IsActive,
+            ImagePath = @ImagePath,
+            IsActive = @IsActive,
             ModifiedBy = @ModifiedBy,
             ModifiedDate = GETDATE()
         WHERE CategoryId = @CategoryId;
