@@ -92,14 +92,13 @@ namespace KioskWebAPI.Services
             var pCatTam = new SqlParameter { ParameterName = "@CatTam", SqlDbType = SqlDbType.NVarChar, Value = item.CatTam, Direction = ParameterDirection.Input };
             var pModifiedBy = new SqlParameter { ParameterName = "@ModifiedBy", SqlDbType = SqlDbType.Int, Value = item.ModifiedBy, Direction = ParameterDirection.Input };
             var pImagePath = new SqlParameter { ParameterName = "@ImagePath", SqlDbType = SqlDbType.NVarChar, Value = item.ImagePath, Direction = ParameterDirection.Input };
-            var pIsActive = new SqlParameter { ParameterName = "@IsActive", SqlDbType = SqlDbType.Bit, Value = item.IsActive, Direction = ParameterDirection.Input };
             var pOut = new SqlParameter { ParameterName = "@Result", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
 
             try
                 {
                     var result = await _context.Database.ExecuteSqlRawAsync(
-                        "EXEC UpdateCategory @CategoryId, @CatEng, @CatSin, @CatTam, @ModifiedBy, @ImagePath, @IsActive, @Result OUTPUT",
-                        pCategoryId, pCatEng, pCatSin, pCatTam, pModifiedBy, pImagePath, pIsActive, pOut);
+                        "EXEC UpdateCategory @CategoryId, @CatEng, @CatSin, @CatTam, @ModifiedBy, @ImagePath, @Result OUTPUT",
+                        pCategoryId, pCatEng, pCatSin, pCatTam, pModifiedBy, pImagePath, pOut);
 
                     outputParam = (int)pOut.Value;
 
