@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /KioskWebAPI/appsettings.json
 /KioskWebAPI/KioskCMS
+/KioskWebAPI/KioskFrontend
